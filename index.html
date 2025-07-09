@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KOMOR-OS - Неоновые прошивки</title>
+    <title>KOMOR-OS - Дерзкие прошивки</title>
     <style>
         * {
             margin: 0;
@@ -11,24 +11,24 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: #080808;
-            color: #e0e0e0;
+            font-family: 'Orbitron', sans-serif;
+            background: #000;
+            color: #fff;
             line-height: 1.6;
             overflow-x: hidden;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
         header {
-            background: #0a0a0a;
-            padding: 20px 0;
+            background: #000;
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 2px solid #ff00ff;
+            border-bottom: 1px solid #00ff88;
         }
         .header-content {
             display: flex;
@@ -36,147 +36,180 @@
             align-items: center;
         }
         .logo {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #00ffcc;
-            text-shadow: 0 0 15px #00ffcc;
-            transition: text-shadow 0.3s;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff0088;
+            text-shadow: 0 0 10px #ff0088;
+            transition: transform 0.3s;
         }
         .logo:hover {
-            text-shadow: 0 0 25px #00ffcc;
+            transform: scale(1.1);
         }
         nav ul {
             display: flex;
             list-style: none;
         }
         nav ul li {
-            margin-left: 30px;
+            margin-left: 25px;
         }
         nav ul li a {
             color: #fff;
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
             transition: color 0.3s;
         }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #00ff88;
+            transition: width 0.3s;
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
         nav ul li a:hover {
-            color: #ff00ff;
-            text-shadow: 0 0 10px #ff00ff;
-        }
-        .btn {
-            padding: 10px 25px;
-            background: #ff00ff;
-            color: #000;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: background 0.3s, transform 0.3s;
-        }
-        .btn:hover {
-            background: #00ffcc;
-            transform: translateY(-3px);
-            box-shadow: 0 0 20px #00ffcc;
+            color: #00ff88;
         }
         .hero {
             text-align: center;
-            padding: 120px 20px;
-            background: linear-gradient(135deg, #ff00ff, #00ffcc);
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            margin-bottom: 60px;
+            padding: 100px 20px;
+            background: radial-gradient(circle, #ff0088, #000);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 0, 136, 0.2), transparent);
+            animation: pulse 10s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
         .hero h1 {
-            font-size: 4rem;
-            color: #000;
-            text-shadow: 0 0 20px #fff;
+            font-size: 3.5rem;
+            color: #00ff88;
+            text-shadow: 0 0 15px #00ff88;
             margin-bottom: 20px;
-            animation: fadeIn 2s ease-in-out;
+            animation: slideIn 1s ease-out;
         }
         .hero p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #fff;
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto 30px;
+            opacity: 0.9;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .btn {
+            padding: 12px 30px;
+            background: #ff0088;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: #00ff88;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px #00ff88;
         }
         .section {
-            margin-bottom: 80px;
+            margin-bottom: 70px;
             text-align: center;
         }
         .section h2 {
-            font-size: 2.8rem;
-            color: #00ffcc;
-            text-shadow: 0 0 15px #00ffcc;
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: #ff0088;
+            text-shadow: 0 0 10px #ff0088;
+            margin-bottom: 25px;
         }
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
         .feature {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 20px;
-            border: 2px solid #ff00ff;
+            background: #111;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #ff0088;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         .feature:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px #ff00ff;
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px #ff0088;
         }
         .feature img {
             width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            border-radius: 5px;
+            margin-bottom: 15px;
         }
         .feature h3 {
-            color: #ff00ff;
-            font-size: 1.6rem;
+            color: #00ff88;
+            font-size: 1.4rem;
             margin-bottom: 10px;
         }
         .beta-form {
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 20px;
-            border: 2px solid #00ffcc;
+            background: #111;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #00ff88;
         }
         .beta-form input, .beta-form textarea {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            background: #080808;
-            border: 1px solid #ff00ff;
-            border-radius: 10px;
-            color: #e0e0e0;
+            padding: 10px;
+            margin-bottom: 15px;
+            background: #222;
+            border: 1px solid #ff0088;
+            border-radius: 5px;
+            color: #fff;
             font-size: 1rem;
             transition: border 0.3s;
         }
         .beta-form input:focus, .beta-form textarea:focus {
-            border: 1px solid #00ffcc;
-            box-shadow: 0 0 10px #00ffcc;
+            border: 1px solid #00ff88;
+            box-shadow: 0 0 10px #00ff88;
             outline: none;
         }
         .beta-form button {
             width: 100%;
             padding: 12px;
-            background: #ff00ff;
+            background: #ff0088;
             border: none;
-            border-radius: 50px;
-            color: #000;
-            font-size: 1.2rem;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s, transform 0.3s;
         }
         .beta-form button:hover {
-            background: #00ffcc;
+            background: #00ff88;
             transform: translateY(-3px);
-            box-shadow: 0 0 15px #00ffcc;
+            box-shadow: 0 0 15px #00ff88;
         }
         .modal {
             display: none;
@@ -185,51 +218,51 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 200;
             justify-content: center;
             align-items: center;
             overflow-y: auto;
         }
         .modal-content {
-            background: #1a1a1a;
-            padding: 40px;
-            border-radius: 20px;
-            border: 2px solid #ff00ff;
-            max-width: 900px;
+            background: #111;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #ff0088;
+            max-width: 800px;
             width: 90%;
             position: relative;
-            animation: slideIn 0.5s ease-in-out;
+            animation: zoomIn 0.5s ease-in-out;
         }
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
         .close-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             font-size: 1.5rem;
-            color: #ff00ff;
+            color: #ff0088;
             cursor: pointer;
             transition: color 0.3s;
         }
         .close-btn:hover {
-            color: #00ffcc;
+            color: #00ff88;
         }
         .search-bar {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 30px;
-            background: #080808;
-            border: 1px solid #00ffcc;
-            border-radius: 10px;
-            color: #e0e0e0;
-            font-size: 1.1rem;
+            padding: 10px;
+            margin-bottom: 20px;
+            background: #222;
+            border: 1px solid #00ff88;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
         }
         .search-bar:focus {
-            border: 1px solid #ff00ff;
-            box-shadow: 0 0 10px #ff00ff;
+            border: 1px solid #ff0088;
+            box-shadow: 0 0 10px #ff0088;
             outline: none;
         }
         .device-list {
@@ -237,34 +270,34 @@
         }
         .device-list p {
             font-size: 1.2rem;
-            color: #ff00ff;
-            text-shadow: 0 0 10px #ff00ff;
+            color: #ff0088;
+            text-shadow: 0 0 10px #ff0088;
         }
         footer {
-            background: #0a0a0a;
+            background: #000;
             text-align: center;
-            padding: 30px;
-            border-top: 2px solid #00ffcc;
+            padding: 20px;
+            border-top: 1px solid #ff0088;
         }
         footer p {
-            color: #ff00ff;
-            text-shadow: 0 0 10px #ff00ff;
+            color: #00ff88;
+            text-shadow: 0 0 5px #00ff88;
         }
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             .logo {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
             nav ul li {
                 margin-left: 15px;
             }
             nav ul li a {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             .section h2 {
                 font-size: 2rem;
@@ -275,6 +308,7 @@
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -295,28 +329,28 @@
     <div class="hero" id="home">
         <div class="container">
             <h1>KOMOR-OS</h1>
-            <p>Прошивки с неоновыми анимациями и кастомизацией, которые взорвут твой телефон!</p>
-            <a href="#beta" class="btn">Врывайся в бета-тест</a>
+            <p>Прошивки, которые рвут твой телефон анимациями и лютой кастомизацией!</p>
+            <a class="btn" onclick="scrollToBeta()">Врывайся в бета-тест</a>
         </div>
     </div>
     <div class="container">
         <div class="section" id="features">
-            <h2>Что делает KOMOR-OS?</h2>
+            <h2>Почему KOMOR-OS?</h2>
             <div class="features">
                 <div class="feature">
-                    <img src="https://via.placeholder.com/300x200?text=Neon+Animations" alt="Анимации">
-                    <h3>Неоновые анимации</h3>
-                    <p>Эффекты, от которых твой экран будет гореть ярче неона.</p>
+                    <img src="https://via.placeholder.com/300x200?text=Animations" alt="Анимации">
+                    <h3>Анимации</h3>
+                    <p>Эффекты, которые заставят твой экран сиять как в киберпанке.</p>
                 </div>
                 <div class="feature">
                     <img src="https://via.placeholder.com/300x200?text=Customization" alt="Кастомизация">
                     <h3>Кастомизация</h3>
-                    <p>Делай телефон своим — меняй всё, что захочешь.</p>
+                    <p>Делай телефон своим — от иконок до тем, всё под твой вайб.</p>
                 </div>
                 <div class="feature">
                     <img src="https://via.placeholder.com/300x200?text=Speed" alt="Скорость">
                     <h3>Скорость</h3>
-                    <p>Оптимизация, чтобы твой девайс летал как ракета.</p>
+                    <p>Оптимизация, чтобы твой девайс летал быстрее ракеты.</p>
                 </div>
             </div>
         </div>
@@ -337,13 +371,13 @@
             <h2>Поддерживаемые устройства</h2>
             <input type="text" class="search-bar" id="deviceSearch" placeholder="Поиск устройства..." onkeyup="searchDevices()">
             <div class="device-list" id="deviceList">
-                <p>Пока нет поддерживаемых устройств, но скоро будут! Оставайся на связи!</p>
+                <p>Пока нет поддерживаемых устройств, но скоро зажжём! Следи за обновами!</p>
             </div>
         </div>
     </div>
     <footer>
         <div class="container">
-            <p>© 2025 KOMOR-OS. Неон, скорость, вайб!</p>
+            <p>© 2025 KOMOR-OS. Неон, скорость, дерзость!</p>
         </div>
     </footer>
     <script>
@@ -359,7 +393,15 @@
             if (input) {
                 deviceList.innerHTML = `<p>Ничего не найдено, устройств пока нет!</p>`;
             } else {
-                deviceList.innerHTML = `<p>Пока нет поддерживаемых устройств, но скоро будут! Оставайся на связи!</p>`;
+                deviceList.innerHTML = `<p>Пока нет поддерживаемых устройств, но скоро зажжём! Следи за обновами!</p>`;
+            }
+        }
+        function scrollToBeta() {
+            const betaSection = document.getElementById('beta');
+            if (betaSection) {
+                betaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                console.error('Секция #beta не найдена');
             }
         }
         window.onclick = function(event) {
